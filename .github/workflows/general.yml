@@ -4,7 +4,6 @@ on:
   # NB: this differs from the book's project!
   # These settings allow us to run this specific CI pipeline for PRs against
   # this specific branch (a.k.a. book chapter).
-  # A specified branch is used on CI pipeline.
   push:
     branches:
       - root-chapter-03-part1
@@ -75,7 +74,7 @@ jobs:
       - name: Migrate database
         run: |
           sudo apt-get install libpq-dev -y
-          SKIP_DOCKER=true ./zero2/scripts/init_db.sh
+          SKIP_DOCKER=true ./scripts/init_db.sh
 
       - name: Run cargo test
         uses: actions-rs/cargo@v1
@@ -147,7 +146,7 @@ jobs:
       - name: Migrate database
         run: |
           sudo apt-get install libpq-dev -y
-          SKIP_DOCKER=true ./zero2/scripts/init_db.sh
+          SKIP_DOCKER=true ./scripts/init_db.sh
 
       - name: Run clippy
         uses: actions-rs/clippy-check@v1
@@ -204,7 +203,7 @@ jobs:
       - name: Migrate database
         run: |
           sudo apt-get install libpq-dev -y
-          SKIP_DOCKER=true ./zero2/scripts/init_db.sh
+          SKIP_DOCKER=true ./scripts/init_db.sh
 
       - name: Run cargo-tarpaulin
         uses: actions-rs/tarpaulin@v0.1
